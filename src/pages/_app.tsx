@@ -1,6 +1,19 @@
-import "@/styles/globals.css";
-import type { AppProps } from "next/app";
+import '@/styles/globals.css';
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
-}
+import { SessionProvider } from 'next-auth/react';
+import Navbar from '@/components/Navbar';
+
+const MyApp = ({ Component, pageProps: { session, ...pageProps } }) => (
+  <SessionProvider session={session}>
+    <div className=''>
+      <Navbar />
+      <main className='p-6'>
+        <Component {...pageProps} />
+      </main>
+    </div>
+  </SessionProvider>
+);
+
+export default MyApp;
+
+ 
