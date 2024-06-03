@@ -2,15 +2,16 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { getSession, signIn, signOut } from 'next-auth/react';
+import { Session } from '@/types/interfaces';
 
 const Navbar = () => {
-  const [session, setSession] = useState(null);
+  const [session, setSession] = useState<Session | null>(null);
   const router = useRouter();
 
   useEffect(() => {
     const fetchSession = async () => {
       const response = await getSession();
-      setSession(response);
+      setSession(response as Session | null);
     };
 
     fetchSession();

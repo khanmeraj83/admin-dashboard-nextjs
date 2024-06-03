@@ -1,15 +1,15 @@
-
 import { useEffect, useState } from 'react';
-import { getSession} from 'next-auth/react';
+import { getSession } from 'next-auth/react';
 import Dashboard from '@/components/Dashboard';
+import { Session } from '@/types/interfaces';
 
 const Home = () => {
-  const [session, setSession] = useState(null);
+  const [session, setSession] = useState<Session | null>(null);
 
   useEffect(() => {
     const fetchSession = async () => {
       const response = await getSession();
-      setSession(response);
+      setSession(response as Session | null);
     };
 
     fetchSession();
@@ -32,4 +32,3 @@ const Home = () => {
 };
 
 export default Home;
-

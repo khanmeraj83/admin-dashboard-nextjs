@@ -16,3 +16,14 @@ export interface Product {
     brand?: string;
   }
   
+export interface User {
+    email: string;
+    id: number;
+    name: string;
+  }
+  
+  export interface Session {
+    expires: string;
+    user: User;
+  }
+  
