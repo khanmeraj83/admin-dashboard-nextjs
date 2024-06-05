@@ -50,9 +50,9 @@ const Navbar = () => {
               </>
             )}
             {!session ? (
-              <button onClick={() => signIn()}>Sign in</button>
+              <button className='p-2 rounded' onClick={() => signIn()}>Sign in</button>
             ) : (
-              <button onClick={() => signOut()}>Sign out</button>
+              <button className='p-2 rounded' onClick={() => signOut()}>Sign out</button>
             )}
           </div>
         </div>
