@@ -27,3 +27,7 @@ export interface User {
     user: User;
   }
   
+  interface Credentials {
+    username: string;
+    password: string;
+  }

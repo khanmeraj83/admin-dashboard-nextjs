@@ -11,6 +11,9 @@ interface User {
 
 
 export default NextAuth({
+pages: {
+        signIn: '/login',
+       },
   providers: [
     CredentialsProvider({
       name: 'Credentials',
