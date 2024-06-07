@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { getSession, signIn, signOut } from 'next-auth/react';
 import { Session } from '@/types/interfaces';
+import ThemeSwitcher from '@/components/ThemeSwitcher';
 
 const Navbar = () => {
   const [session, setSession] = useState<Session | null>(null);
@@ -21,6 +22,7 @@ const Navbar = () => {
     <nav className='bg-gray-800 text-white'>
       <div className='container mx-auto px-4'>
         <div className='flex justify-between items-center py-4'>
+          {session && <ThemeSwitcher />}
           <div className='text-xl font-bold'>
             <Link href='/'>Admin Dashboard</Link>
           </div>
@@ -50,9 +52,13 @@ const Navbar = () => {
               </>
             )}
             {!session ? (
-              <button className='p-2 rounded' onClick={() => signIn()}>Sign in</button>
+              <button className='p-2 rounded' onClick={() => signIn()}>
+                Sign in
+              </button>
             ) : (
-              <button className='p-2 rounded' onClick={() => signOut()}>Sign out</button>
+              <button className='p-2 rounded' onClick={() => signOut()}>
+                Sign out
+              </button>
             )}
           </div>
         </div>
